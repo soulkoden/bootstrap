@@ -12,10 +12,10 @@ func MustConfigureLogger() *zap.Logger {
 	var cfg zap.Config
 	switch os.Getenv("APP_ENV") {
 	case "prod", "production":
+		cfg = zap.NewProductionConfig()
+	case "dev", "development":
 		cfg = zap.NewDevelopmentConfig()
 		cfg.EncoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder
-	case "dev", "development":
-		cfg = zap.NewProductionConfig()
 	default:
 		log.Fatalf("unknown APP_ENV: %s\n", os.Getenv("APP_ENV"))
 	}
