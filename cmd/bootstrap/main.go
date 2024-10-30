@@ -14,6 +14,11 @@ func main() {
 	zap.ReplaceGlobals(bootstrap.MustConfigureLogger())
 
 	fx.New(
+		// configure logging
+		fx.Supply(zap.L()), // or not globally usage: fx.Supply(bootstrap.MustConfigureLogger())
+		bootstrap.ZapLogger,
+
+		// service groups usage
 		bootstrap.Provide[marker]("svc", newService1, newService2),
 		//// Same as:
 		//fx.Provide(

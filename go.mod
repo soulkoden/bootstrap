@@ -3,6 +3,7 @@ module github.com/soulkoden/bootstrap
 go 1.23.2
 
 require (
+	github.com/davecgh/go-spew v1.1.1
 	github.com/joho/godotenv v1.5.1
 	go.uber.org/fx v1.23.0
 	go.uber.org/zap v1.27.0
